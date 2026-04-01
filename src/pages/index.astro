@@ -1,17 +1,81 @@
 ---
+const url = "https://api.themoviedb.org/3/discover/movie?with_cast=1206334&api_key=583b5a18187e6863672213de45039c4e&language=en-US";
 
+const response = await fetch(url);
+const data = await response.json();
+
+const moviesWithPosters = data.results.filter(movie => movie.poster_path);
+
+function getRandomMovies(arr, n) {
+  const shuffled = [...arr].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, n);
+}
+
+const movies = getRandomMovies(moviesWithPosters, 4);
+const correctMovie = movies.length > 0
+  ? movies[Math.floor(Math.random() * movies.length)]
+  : null;
+
+const options = movies.map(movie => movie.title);
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Scene It?</title>
+  </head>
+  <body>
+    <h1> Scene It?</h1>
+
+    {correctMovie ? (
+      <div>
+        <h2>Guess the movie</h2>
+        <img src={`https://image.tmdb.org/t/p/w300${correctMovie.poster_path}`} alt={correctMovie.title} />
+
+        <div id="answers">
+          {options.map((option, i) => (
+            <button data-title={option}>{option}</button>
+          ))}
+        </div>
+
+        <p id="result"></p>
+        <p id="score">Score: 0</p>
+
+        <button id="nextBtn">Next Question</button>
+      </div>
+    ) : (
+      <p>Sorry, could not load movies. Please try again later.</p>
+    )}
+
+    <script>
+      let score = 0;
+      const correctAnswer = JSON.parse('{JSON.stringify(correctMovie ? correctMovie.title : "")}');
+
+      function checkAnswer(selected) {
+        const result = document.getElementById("result");
+
+        if (selected === correctAnswer) {
+          result.textContent = "Correct!";
+          score++;
+        } else {
+          result.textContent = "Wrong!";
+        }
+
+        document.getElementById("score").textContent = "Score: " + score;
+      }
+
+      function nextQuestion() {
+        location.reload();
+      }
+
+      // Attach event listeners
+      const buttons = document.querySelectorAll("#answers button");
+      buttons.forEach(button => {
+        button.addEventListener("click", () => checkAnswer(button.dataset.title));
+      });
+
+      document.getElementById("nextBtn").addEventListener("click", nextQuestion);
+    </script>
+  </body>
 </html>

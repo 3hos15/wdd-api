@@ -1,43 +1,23 @@
-# Astro Starter Kit: Minimal
+# Reflectie Minor Web API
 
-```sh
-npm create astro@latest -- --template minimal
-```
+## Dagelijkse vragen
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+**Wat heb ik vandaag gedaan:**<br>
+**Wat heb ik geleerd:**<br>
+**Wat ga ik morgen doen:**<br>
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## Week 1
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+### Woensdag 1 april 
+**Wat heb ik vandaag gedaan:**<br>
+Vandaag hebben de opdracht voor het API vak uit gelegd gekregen. Daarna hebben we een workshop over Astro gevolgd. Daarna had ik een idee bedacht voor de opdracht en gekeken naar welke API's ik daarvoor kan gebruiken. <br>
+Het idee van mijn website is een soort film trivia. Je krijgt films uit de tmbd database te zien (voor nu) kan je met een multiple choice kiezen welk antwoord goed is. Ook wil ik gebruik maken van de Spotif API voor geluidsfragmenten. Verder wil ik gebruik maken van de web share API en de canvas API, voor het maken van een score kaart die je dan kan delen. <br>
+Op dit moment heb ik met math random dat er verschillend film posters en namen (< voor de buttons) worden opgehaald. Cyd had aangegeven ik het met de websocket api interactief kan maken voor meerdere gebruikers. CSS quiz?!?
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+**Wat heb ik geleerd:**<br>
+Over Astro en over hoeveel verschillend API's. Ook over het verschil van server side rendering vs client side rendering.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**Wat ga ik morgen doen:**<br>
+Morgen ga ik mijn concept presenten en verder werken aan de opdracht.
