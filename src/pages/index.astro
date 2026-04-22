@@ -1,81 +1,80 @@
 ---
-const url = "https://api.themoviedb.org/3/discover/movie?with_cast=1206334&api_key=583b5a18187e6863672213de45039c4e&language=en-US";
+const GEO_API_KEY = import.meta.env.IPGEO_API_KEY;
 
-const response = await fetch(url);
-const data = await response.json();
+const lat = 52.3676;
+const lng = 4.9041; 
 
-const moviesWithPosters = data.results.filter(movie => movie.poster_path);
+const res = await fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${GEO_API_KEY}&lat=${lat}&long=${lng}`);
+const sky = await res.json();
 
-function getRandomMovies(arr, n) {
-  const shuffled = [...arr].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, n);
-}
 
-const movies = getRandomMovies(moviesWithPosters, 4);
-const correctMovie = movies.length > 0
-  ? movies[Math.floor(Math.random() * movies.length)]
-  : null;
+const ASTRO_API_KEY = import.meta.env.ASTRO_API_KEY;
+const ASTRO_API_SECRET = import.meta.env.ASTRO_API_SECRET;
 
-const options = movies.map(movie => movie.title);
+const auth = btoa(`${ASTRO_API_KEY}:${ASTRO_API_SECRET}`);
+
+const astroRes = await fetch(
+  `https://api.astronomyapi.com/api/v2/studio/moon-phase?latitude=${lat}&longitude=${lng}`,
+  {
+    headers: {
+      Authorization: `Basic ${auth}`,
+    },
+  }
+);
+
+const astroData = await astroRes.json();
+
+
+console.log(astroData.data);
+
+// const moonImage = astroData.data.imageUrl;
+
+
+
+
+
+
+
 ---
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Scene It?</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overhead</title>
+    <link rel="stylesheet" href="/style/style.css" />
   </head>
+
   <body>
-    <h1> Scene It?</h1>
+    <header>
+      <h1>The Space Above</h1>
+      <p>Latitude: {lat}°, Longitude: {lng}°</p>
+    </header>
 
-    {correctMovie ? (
-      <div>
-        <h2>Guess the movie</h2>
-        <img src={`https://image.tmdb.org/t/p/w300${correctMovie.poster_path}`} alt={correctMovie.title} />
+    <article>
+      <p>Sunrise: {sky.sunrise}</p>
+    </article>
 
-        <div id="answers">
-          {options.map((option, i) => (
-            <button data-title={option}>{option}</button>
-          ))}
-        </div>
+    <article>
+      <p>Sunset: {sky.sunset}</p>
+    </article>
 
-        <p id="result"></p>
-        <p id="score">Score: 0</p>
+    <article>
+      <p>Moonrise: {sky.moonrise}</p>
+    </article>
 
-        <button id="nextBtn">Next Question</button>
-      </div>
-    ) : (
-      <p>Sorry, could not load movies. Please try again later.</p>
-    )}
+    <article>
+      <p>Moonset: {sky.moonset}</p>
+    </article>
 
-    <script>
-      let score = 0;
-      const correctAnswer = JSON.parse('{JSON.stringify(correctMovie ? correctMovie.title : "")}');
+    <article>
+      <p>Moon Phase: {sky.moon_phase}</p>
+    </article>
 
-      function checkAnswer(selected) {
-        const result = document.getElementById("result");
+    <article>
+      <p>Moon Illumination: {sky.moon_illumination_percentage}%</p>
+    </article>
 
-        if (selected === correctAnswer) {
-          result.textContent = "Correct!";
-          score++;
-        } else {
-          result.textContent = "Wrong!";
-        }
 
-        document.getElementById("score").textContent = "Score: " + score;
-      }
-
-      function nextQuestion() {
-        location.reload();
-      }
-
-      // Attach event listeners
-      const buttons = document.querySelectorAll("#answers button");
-      buttons.forEach(button => {
-        button.addEventListener("click", () => checkAnswer(button.dataset.title));
-      });
-
-      document.getElementById("nextBtn").addEventListener("click", nextQuestion);
-    </script>
   </body>
 </html>
