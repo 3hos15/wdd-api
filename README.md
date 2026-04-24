@@ -99,7 +99,7 @@ Feedback gesprekken en verder werken aan de website
 - understandable
 - robust
 
-wcag is een handig hulpmiddel maar neit de enige die jehebt om oieys toeganklijk te maken
+WCAG is een handig hulpmiddel maar neit de enige die jehebt om oieys toeganklijk te maken
 leg het voor aan echte mensen 
 
 geen alt tekst bij een afbeelding als het niet noodzakelijk is voor de website. het moet wel een alt attr mar het mag leeg zijn
@@ -133,11 +133,17 @@ https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
 
 **Wat heb ik vandaag gedaan:**<br>
 Ik heb gewerkt aan de styling van de website. Ook hebben ik (met hulp van claude) de zenith arc svg erin gekregen. Verder heb ik de geolocation gebonden aan de api zodat hij echt de coords van de gebruiker pakt, en de URL: searchParams gebruikt om het op te slaan. Daarna ben ik begonnen aan de detail pagina
+
 **Wat heb ik geleerd:**<br>
 Over hoe ik de geolocation api werkend krijg, de params
+
 **Wat ga ik morgen doen:**<br>
 (In de vakantie) De details pagina afkrijgen. Ik wil van de cards op de eerste pagina flipping cards maken met de info over wat bepaalde dingen betekenen. Als detail pagina wil ik een andere api gebruiken om afbeeldingen van de maan in haar staat.
 
 
 
-andere locaties, comparen, op elkaar?!?!
+
+
+**TODO**
+Andere locaties (coordinaties API), compare naast elkaar doen?, zenith op elkaar?!?!
+favicon toevoegen?? 

@@ -49,7 +49,6 @@ if (lat && lng) {
   cityName = geoData.city || geoData.locality || null;
 }
 
-
 ---
 
 <html lang="en">
@@ -59,7 +58,6 @@ if (lat && lng) {
     <title>The Space Above</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/style/style.css" />
-    <!-- favicon -->
   </head>
 
   <body>
@@ -82,8 +80,8 @@ if (lat && lng) {
             <div class="flip-front">
               <p class="arc-label">Sky Arc — Sun &amp; Moon Position</p>
               <svg viewBox="0 0 300 160" style="width:100%;max-width:500px;display:block;margin:0 auto;overflow:visible">
-                <line x1="10" y1="145" x2="290" y2="145" stroke="rgba(120,160,255,0.15)" stroke-width="1"/>
-                <path d="M 10 145 A 140 140 0 0 1 290 145" fill="none" stroke="rgba(245,199,106,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+                <line x1="10" y1="145" x2="290" y2="145" stroke="rgba(120,160,255,0.50)" stroke-width="1"/>
+                <path d="M 10 145 A 140 140 0 0 1 290 145" fill="none" stroke="rgba(245,199,106,0.50)" stroke-width="1" stroke-dasharray="4 4"/>
                 <text x="6"   y="155" font-family="Space Mono" font-size="9" fill="rgba(120,160,255,0.4)">E</text>
                 <text x="148" y="16"  font-family="Space Mono" font-size="9" fill="rgba(120,160,255,0.4)" text-anchor="middle">Zenith</text>
                 <text x="286" y="155" font-family="Space Mono" font-size="9" fill="rgba(120,160,255,0.4)" text-anchor="end">W</text>
@@ -139,6 +137,7 @@ if (lat && lng) {
             </div>
           </>
         )}
+
       </div>
     </main>
 
