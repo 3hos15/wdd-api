@@ -41,6 +41,15 @@ if (sky) {
     (parseFloat(sky.moon_altitude) > 0 ? `Moon ${parseFloat(sky.moon_altitude).toFixed(1)}° above horizon` : 'Moon below horizon');
 }
 
+let cityName = null;
+
+if (lat && lng) {
+  const geoRes = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=en`);
+  const geoData = await geoRes.json();
+  cityName = geoData.city || geoData.locality || null;
+}
+
+
 ---
 
 <html lang="en">
@@ -58,9 +67,15 @@ if (sky) {
       <div class="outside">
     
         <header>
-          <h1>The Space Above</h1>
+          <h1>The Space Above {cityName ?? 'You'}</h1>
           <p class="coords">{lat && `${lat}° N · ${lng}° E`}</p>       
         </header>
+
+        <div class="search-wrap">
+          <input id="city-input" type="text" placeholder="Search a city..." class="city-input" />
+          <button id="city-btn" class="city-btn">Search</button>
+          <button id="my-location-btn" class="city-btn">↺ Me</button>
+        </div>
 
         <div class="flip-card">
           <div class="flip-inner">
@@ -98,7 +113,7 @@ if (sky) {
             </a>
 
             <div class="card sun">
-              <p class="card-title">Sun</p>
+              <p class="card-title">Sun Altitude</p>
               <p class="card-main">{sky.sun_altitude}°</p>
               <p class="card-sub">Sunrise {sky.sunrise} · Sunset {sky.sunset}</p>
               <p class="card-sub">Solar noon {sky.solar_noon}</p>
@@ -124,7 +139,6 @@ if (sky) {
             </div>
           </>
         )}
-
       </div>
     </main>
 
@@ -136,6 +150,32 @@ if (sky) {
           }
         );
       }
+
+      document.getElementById('my-location-btn').addEventListener('click', () => {
+        window.location.href = window.location.pathname;
+      });
     </script>
+
+    <script>
+      document.getElementById('city-btn').addEventListener('click', async () => {
+        const city = document.getElementById('city-input').value.trim();
+        if (!city) return;
+
+        const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`);
+        const data = await res.json();
+
+        if (!data.results || !data.results.length) {
+          alert('City not found');
+          return;
+        }
+
+        const { latitude, longitude } = data.results[0];
+        window.location.search = `?lat=${latitude}&lng=${longitude}`;
+      });
+
+      document.getElementById('city-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') document.getElementById('city-btn').click();
+      });
+</script>
   </body>
 </html>

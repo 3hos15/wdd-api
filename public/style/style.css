@@ -218,3 +218,49 @@ border-color: rgba(200, 216, 248, 0.4);
 box-shadow: 0 0 30px rgba(200, 216, 248, 0.06), 0 0 60px rgba(180, 200, 240, 0.04);
 }
 
+.search-wrap {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.city-input {
+  flex: 1;
+  background: #0d1525;
+  border: 1px solid rgba(120, 160, 255, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #a8c0e8;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  outline: none;
+}
+
+.city-input:focus {
+  border-color: rgba(120, 160, 255, 0.35);
+}
+
+.city-input::placeholder {
+  color: #4a6080;
+}
+
+.city-btn {
+  background: none;
+  border: 1px solid rgba(120, 160, 255, 0.2);
+  border-radius: 8px;
+  color: #a8c0e8;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.city-btn:hover {
+  border-color: rgba(120, 160, 255, 0.4);
+  color: #c8d8f8;
+}
+
+
