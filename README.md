@@ -60,9 +60,6 @@ diy!DIWO
 - elke donderdag avond
 - lag social evening vrijdagavond
 
-
-
-
 ---
 
 ## Reflectie week 1 API
@@ -125,3 +122,22 @@ wat heeft persoon nodig
 eigen project waarom zou persoon afhaken
 - martijn: 
 
+
+---
+
+## Week 4
+
+### donderdag 23 april Jelle
+https://www.youtube.com/watch?v=KIQShH4b_oQ
+https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
+
+**Wat heb ik vandaag gedaan:**<br>
+Ik heb gewerkt aan de styling van de website. Ook hebben ik (met hulp van claude) de zenith arc svg erin gekregen. Verder heb ik de geolocation gebonden aan de api zodat hij echt de coords van de gebruiker pakt, en de URL: searchParams gebruikt om het op te slaan. Daarna ben ik begonnen aan de detail pagina
+**Wat heb ik geleerd:**<br>
+Over hoe ik de geolocation api werkend krijg, de params
+**Wat ga ik morgen doen:**<br>
+(In de vakantie) De details pagina afkrijgen. Ik wil van de cards op de eerste pagina flipping cards maken met de info over wat bepaalde dingen betekenen. Als detail pagina wil ik een andere api gebruiken om afbeeldingen van de maan in haar staat.
+
+
+
+andere locaties, comparen, op elkaar?!?!

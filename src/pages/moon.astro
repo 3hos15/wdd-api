@@ -13,22 +13,15 @@ const sky = await res.json();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overhead</title>
+    <title>The Space Above</title>
     <link rel="stylesheet" href="/style/style.css" />
   </head>
   
   <body>
-    <div class="container">
-      <h1>Overhead</h1>
-      <p id="location">Latitude: {lat}°, Longitude: {lng}°</p>
-      <div id="data">
-        <p>Sunrise: {sky.sunrise}</p>
-        <p>Sunset: {sky.sunset}</p>
-        <p>Moonrise: {sky.moonrise}</p>
-        <p>Moonset: {sky.moonset}</p>
-        <p>Moon Phase: {sky.moon_phase}</p>
-        <p>Moon Illumination: {sky.moon_illumination_percentage}%</p>
-      </div>
-    </div>
+    <header>
+      <h1>The Space Above</h1>
+      <p class="coords">{lat && `${lat}° N · ${lng}° E`}</p>       
+    </header>
+
   </body>
 </html>

@@ -1,39 +1,45 @@
 ---
+export const prerender = false;
+
 const GEO_API_KEY = import.meta.env.IPGEO_API_KEY;
 
-const lat = 52.3676;
-const lng = 4.9041; 
+const url = new URL(Astro.request.url);
+const lat = url.searchParams.get('lat');
+const lng = url.searchParams.get('lng');
 
-const res = await fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${GEO_API_KEY}&lat=${lat}&long=${lng}`);
-const sky = await res.json();
+let sky = null;
 
+if (lat && lng) {
+  const res = await fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${GEO_API_KEY}&lat=${lat}&long=${lng}`);
 
-const ASTRO_API_KEY = import.meta.env.ASTRO_API_KEY;
-const ASTRO_API_SECRET = import.meta.env.ASTRO_API_SECRET;
+  sky = await res.json();
+}
 
-const auth = btoa(`${ASTRO_API_KEY}:${ASTRO_API_SECRET}`);
+let sunX = 150, sunY = 145, moonX = 150, moonY = 145;
+let sunOpacity = '0', moonOpacity = '0';
+let arcNote = '';
 
-const astroRes = await fetch(
-  `https://api.astronomyapi.com/api/v2/studio/moon-phase?latitude=${lat}&longitude=${lng}`,
-  {
-    headers: {
-      Authorization: `Basic ${auth}`,
-    },
-  }
-);
+if (sky) {
+  const toXY = (alt, az) => {
+    const x = 10 + ((parseFloat(az) - 60) / 240) * 280;
+    const y = 145 - (Math.max(0, parseFloat(alt)) / 90) * 135;
+    return { x: Math.max(10, Math.min(290, x)), y: Math.max(10, Math.min(145, y)) };
+  };
 
-const astroData = await astroRes.json();
+  const sun  = toXY(sky.sun_altitude,  sky.sun_azimuth);
+  const moon = toXY(sky.moon_altitude, sky.moon_azimuth);
 
+  sunX  = sun.x;  sunY  = sun.y;
+  moonX = moon.x; moonY = moon.y;
 
-console.log(astroData.data);
+  sunOpacity  = parseFloat(sky.sun_altitude)  > 0 ? '1' : '0.25';
+  moonOpacity = parseFloat(sky.moon_altitude) > 0 ? '1' : '0.25';
 
-// const moonImage = astroData.data.imageUrl;
-
-
-
-
-
-
+  arcNote =
+    (parseFloat(sky.sun_altitude)  > 0 ? `Sun ${parseFloat(sky.sun_altitude).toFixed(1)}° above horizon`  : 'Sun below horizon') +
+    '  ·  ' +
+    (parseFloat(sky.moon_altitude) > 0 ? `Moon ${parseFloat(sky.moon_altitude).toFixed(1)}° above horizon` : 'Moon below horizon');
+}
 
 ---
 
@@ -41,40 +47,95 @@ console.log(astroData.data);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overhead</title>
+    <title>The Space Above</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Space+Mono:wght@400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/style/style.css" />
+    <!-- favicon -->
   </head>
 
   <body>
-    <header>
-      <h1>The Space Above</h1>
-      <p>Latitude: {lat}°, Longitude: {lng}°</p>
-    </header>
+    <main>
+      <div class="outside">
+    
+        <header>
+          <h1>The Space Above</h1>
+          <p class="coords">{lat && `${lat}° N · ${lng}° E`}</p>       
+        </header>
 
-    <article>
-      <p>Sunrise: {sky.sunrise}</p>
-    </article>
+        <div class="flip-card">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <p class="arc-label">Sky Arc — Sun &amp; Moon Position</p>
+              <svg viewBox="0 0 300 160" style="width:100%;max-width:500px;display:block;margin:0 auto;overflow:visible">
+                <line x1="10" y1="145" x2="290" y2="145" stroke="rgba(120,160,255,0.15)" stroke-width="1"/>
+                <path d="M 10 145 A 140 140 0 0 1 290 145" fill="none" stroke="rgba(245,199,106,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+                <text x="6"   y="155" font-family="Space Mono" font-size="9" fill="rgba(120,160,255,0.4)">E</text>
+                <text x="148" y="16"  font-family="Space Mono" font-size="9" fill="rgba(120,160,255,0.4)" text-anchor="middle">Zenith</text>
+                <text x="286" y="155" font-family="Space Mono" font-size="9" fill="rgba(120,160,255,0.4)" text-anchor="end">W</text>
+                <circle cx={sunX} cy={sunY} r="8" fill="rgba(245,199,106,0.8)" opacity={sunOpacity}/>
+                <text x={sunX} y={sunY - 12} font-family="Space Mono" font-size="8" fill="#f5c76a" text-anchor="middle" opacity={sunOpacity}>Sun</text>
+                <circle cx={moonX} cy={moonY} r="6" fill="rgba(200,216,248,0.7)" opacity={moonOpacity}/>
+                <text x={moonX} y={moonY - 10} font-family="Space Mono" font-size="8" fill="#c8d8f8" text-anchor="middle" opacity={moonOpacity}>Moon</text>
+              </svg>
+              <p class="arc-note">{arcNote}</p>
+            </div>
+            <div class="flip-back">
+              <p class="arc-label">What is the zenith?</p>
+              <p class="flip-text">The zenith is the point in the sky directly above you, 90° altitude. The arc diagram shows the path the sun and moon travel from east to west, rising above the horizon and passing beneath the zenith, calculated with the azimuth and altitude.</p>
+            </div>
+          </div>
+        </div>
 
-    <article>
-      <p>Sunset: {sky.sunset}</p>
-    </article>
+        {sky && (
+          <>
+            <a href={`/moon?lat=${lat}&lng=${lng}`} class="card-link">
+              <div class="card">
+                <p class="card-title">Moon Phase</p>
+                <p class="card-main">{sky.moon_phase.replace("_"," ")}</p>
+                <p class="card-sub">{sky.moon_illumination_percentage}% illuminated</p>
+                <p class="card-sub">Moonrise {sky.moonrise} · Moonset {sky.moonset}</p>
+              </div>
+            </a>
 
-    <article>
-      <p>Moonrise: {sky.moonrise}</p>
-    </article>
+            <div class="card sun">
+              <p class="card-title">Sun</p>
+              <p class="card-main">{sky.sun_altitude}°</p>
+              <p class="card-sub">Sunrise {sky.sunrise} · Sunset {sky.sunset}</p>
+              <p class="card-sub">Solar noon {sky.solar_noon}</p>
+            </div>
 
-    <article>
-      <p>Moonset: {sky.moonset}</p>
-    </article>
+            <div class="stats-row">
+              <div class="stat">
+                <p class="stat-val">{sky.sunrise}</p>
+                <p class="stat-label">Sunrise</p>
+              </div>
+              <div class="stat">
+                <p class="stat-val">{sky.sunset}</p>
+                <p class="stat-label">Sunset</p>
+              </div>
+              <div class="stat">
+                <p class="stat-val">{sky.moonrise}</p>
+                <p class="stat-label">Moonrise</p>
+              </div>
+              <div class="stat">
+                <p class="stat-val">{sky.moonset}</p>
+                <p class="stat-label">Moonset</p>
+              </div>
+            </div>
+          </>
+        )}
 
-    <article>
-      <p>Moon Phase: {sky.moon_phase}</p>
-    </article>
+      </div>
+    </main>
 
-    <article>
-      <p>Moon Illumination: {sky.moon_illumination_percentage}%</p>
-    </article>
-
-
+    <script>
+      if (!window.location.search.includes('lat')) {
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            window.location.search = `?lat=${pos.coords.latitude}&lng=${pos.coords.longitude}`;
+          }
+        );
+      }
+    </script>
   </body>
 </html>
