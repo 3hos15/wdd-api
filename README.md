@@ -67,17 +67,15 @@ diy!DIWO
 
 ## Reflectie week 1 API
 
-Tijdens de eerste week van het API vak heb ik vooral kennisgemaakt met de opdracht en onderzocht welke richting ik op wil gaan met mijn project. Op woensdag kregen we eerst uitleg over de opdracht en wat er van ons verwacht wordt. Daarna volgde een workshop over Astro. Hier leerde ik meer over hoe Astro werkt en wat de voordelen zijn van werken met server-side rendering en client-side rendering. Dit was nieuw voor mij en gaf me meer inzicht in hoe websites data kunnen ophalen en tonen.
+Tijdens de eerste week van het API vak heb ik vooral kennisgemaakt met de opdracht en onderzocht welke richting ik op wilde gaan met mijn project. Op woensdag kregen we eerst uitleg over de opdracht en wat er van ons verwacht werd. Daarna volgde een workshop over Astro. Hier leerde ik meer over hoe Astro werkt en wat de voordelen zijn van server-side rendering en client-side rendering. Dit gaf mij meer inzicht in hoe websites data kunnen ophalen en tonen.
 
-Na de workshop ben ik begonnen met brainstormen over een concept voor mijn opdracht. Ik kwam op het idee om een film trivia website te maken waarbij gebruikers vragen krijgen over films. Mijn plan is om films uit de TMDb database te gebruiken en spelers via multiple choice vragen het juiste antwoord te laten kiezen. Daarnaast leek het me leuk om ook gebruik te maken van de Spotify API voor geluidsfragmenten uit films of soundtracks. Verder wil ik de Web Share API en Canvas API gebruiken zodat gebruikers een scorekaart kunnen genereren en delen met anderen.
+Na de workshop begon ik met brainstormen over een concept. Mijn eerste idee was een film trivia website waarbij gebruikers vragen kregen over films. Ik wilde films uit de TMDb API gebruiken en spelers via multiple choice vragen het juiste antwoord laten kiezen. Daarnaast wilde ik de Spotify API gebruiken voor geluidsfragmenten van films of soundtracks. Ook leek het me leuk om de Web Share API en Canvas API te gebruiken zodat gebruikers een scorekaart konden genereren en delen.
 
-Ik ben ook alvast begonnen met experimenteren. Op dit moment lukt het me al om met Math.random() verschillende filmposters en filmtitels op te halen en te tonen als antwoordopties. Tijdens feedback kreeg ik ook de tip van Cyd om eventueel de WebSocket API te gebruiken, zodat het spel later interactiever kan worden en misschien zelfs door meerdere gebruikers tegelijk gespeeld kan worden. Dat idee vond ik interessant, maar ik weet nog niet zeker of dat haalbaar is binnen de tijd van deze opdracht.
+Ik ben direct gaan experimenteren en kreeg het al werkend dat willekeurige filmposters en filmtitels werden opgehaald met Math.random(). Toch begon ik tijdens het testen te twijfelen aan dit concept. Ik merkte dat het idee vooral draaide om quizmechanieken en minder om het op een interessante manier gebruiken van APIs. Daarnaast was ik afhankelijk van meerdere externe APIs die niet allemaal even makkelijk toegankelijk waren. Vooral de combinatie met Spotify voelde geforceerd en maakte het concept ingewikkelder dan nodig.
 
-Op donderdag presenteerde ik mijn concept aan de klas. Tijdens deze presentatie merkte ik dat ik nog niet helemaal zeker ben over mijn concept en welke APIs het meest relevant zijn. Daardoor realiseerde ik me dat ik nog verder moet onderzoeken welke APIs echt waarde toevoegen aan mijn project en welke misschien te ingewikkeld of minder nodig zijn.
+Tijdens feedback kreeg ik ook de suggestie om eventueel WebSockets toe te voegen voor multiplayer functionaliteit. Hoewel dit technisch interessant klonk, besefte ik dat dit het project nog groter en complexer zou maken terwijl de basis van het concept nog niet sterk genoeg voelde.
 
-Tijdens de Weekly Nerd sessie leerde ik daarnaast over onderwerpen zoals planned obsolescence, de impact van cloud services en alternatieve manieren van hosten. Ik vond het interessant om te horen hoe afhankelijk veel mensen zijn van grote techbedrijven en hoe static site generators, zoals Eleventy, een duurzamer alternatief kunnen zijn doordat ze minder serverbelasting veroorzaken. Dit gaf me een bredere kijk op technologie en duurzaamheid.
-
-Terugkijkend op deze week heb ik vooral veel onderzocht en geëxperimenteerd. Ik heb nog niet alles uitgewerkt, maar ik heb wel een duidelijke eerste richting voor mijn project. Volgende week wil ik verder werken aan mijn concept en beter bepalen welke APIs ik daadwerkelijk ga gebruiken.
+Na mijn presentatie op donderdag werd voor mij duidelijk dat het concept wel leuk was, maar niet uniek genoeg voelde en dat de APIs vooral losse toevoegingen waren in plaats van een logisch geheel. Daarom besloot ik verder te kijken naar een concept waarbij de APIs centraler zouden staan in de ervaring van de gebruiker.
 
 ---
 ## Week 2
@@ -140,17 +138,19 @@ eigen project waarom zou persoon afhaken
 ---
 ## week 2 reflectie 
 
-Tijdens week 2 ben ik verder gegaan met het ontwikkelen van mijn concept, maar merkte ik ook dat mijn oorspronkelijke idee begon te veranderen. Op woensdag volgde ik eerst de workshop over dynamic paging in Astro. Tijdens deze workshop leerde ik hoe ik repeatable components kan maken en hoe ik functies met boolean waarden (true en false) kan gebruiken om content dynamisch te tonen. Dit gaf me meer inzicht in hoe ik mijn website efficiënter kan opbouwen.
+Tijdens week 2 ben ik verder gegaan met het ontwikkelen van mijn concept, maar merkte ik opnieuw dat mijn ideeën nog niet helemaal goed aansloten bij wat ik wilde maken.
 
-Na de workshop ben ik verder gegaan met mijn project. Ik heb geëxperimenteerd met geolocation en OpenStreetMap door gebruik te maken van Leaflet. Hiermee kon ik locaties weergeven op een kaart. Dit zorgde ervoor dat mijn project langzaam begon te verschuiven van alleen een film trivia concept naar een idee waarin locatie ook een rol speelt. Ik wilde onderzoeken of ik iets kon maken dat meer leek op een interactieve kaart, vergelijkbaar met Google Maps.
+Op woensdag volgde ik eerst de workshop over dynamic paging in Astro. Tijdens deze workshop leerde ik hoe ik repeatable components kan maken en hoe ik functies met boolean waarden (true en false) kan gebruiken om content dynamisch te tonen.
 
-Op donderdag besloot ik uiteindelijk een nieuw concept te bedenken. Ik merkte dat ik nog niet helemaal tevreden was met mijn eerste idee en wilde beter nadenken over welke APIs echt interessant en haalbaar waren. Daarom ben ik opnieuw gaan kijken naar welke APIs ik wilde gebruiken en heb ik een begin gemaakt met een vernieuwde versie van mijn project. Dit was soms frustrerend, omdat het voelde alsof ik opnieuw moest beginnen, maar uiteindelijk was het wel nodig om een sterker concept neer te zetten.
+Na de workshop begon ik te experimenteren met geolocation en Leaflet in combinatie met OpenStreetMap. Ik vond het interessant om locatiegegevens te gebruiken en wilde kijken of ik iets kon maken dat leek op een interactieve kaart, vergelijkbaar met Google Maps. Hierdoor stapte ik eigenlijk al verder weg van mijn filmconcept.
 
-Tijdens de feedbackgesprekken kreeg ik meer duidelijkheid over mijn project en kon ik verder werken aan de website. Ik merk dat ik nog veel aan het experimenteren ben en dat mijn project nog niet volledig vaststaat, maar ik leer hierdoor wel beter welke technische keuzes bij mijn idee passen.
+Hoewel dit tweede idee technisch interessanter voelde dan de filmquiz, liep ik ook hier tegen problemen aan. Het concept begon erg te lijken op bestaande map-applicaties en ik merkte dat ik nog niet echt een unieke invalshoek had. Ik gebruikte geolocation vooral omdat het technisch leuk was, maar nog niet omdat het inhoudelijk iets toevoegde aan een duidelijk concept. Daardoor voelde het alsof ik opnieuw technologie centraal zette in plaats van de gebruikerservaring.
 
-Tijdens de Weekly Nerd sessie ging het deze week over toegankelijkheid en hoe websites inclusiever ontworpen kunnen worden. Ik vond het interessant om te horen dat de WCAG-richtlijnen een hulpmiddel zijn, maar dat je uiteindelijk vooral moet luisteren naar echte gebruikers. Verschillende sprekers vertelden over hun ervaringen met beperkingen en tegen welke problemen zij online aanlopen. Hierdoor realiseerde ik me dat toegankelijkheid veel verder gaat dan alleen alt-teksten toevoegen. Dingen zoals duidelijke structuur, goed contrast, voorspelbare interacties en het vermijden van te veel prikkels zijn minstens zo belangrijk.
+Op donderdag besloot ik daarom opnieuw kritisch naar mijn project te kijken. Ik wilde een concept ontwikkelen waarbij de APIs niet als losse features aanvoelden, maar echt onderdeel waren van het eindproduct. Dit was frustrerend, omdat het voelde alsof ik opnieuw begon, maar achteraf was dit een belangrijke stap.
 
-Terugkijkend op deze week heb ik geleerd dat het oké is om mijn concept aan te passen wanneer iets niet goed voelt. Hoewel ik hierdoor opnieuw keuzes moest maken, heeft het me wel geholpen om kritischer te kijken naar wat ik wil maken en welke APIs daar echt bij passen. Volgende week wil ik mijn concept verder concretiseren en minder tijd besteden aan twijfelen, zodat ik meer voortgang kan maken in de ontwikkeling.
+Tijdens de feedbackgesprekken werd duidelijk dat ik nog aan het zoeken was naar een concept dat zowel technisch uitdagend als inhoudelijk sterk was. Deze zoektocht leidde uiteindelijk later naar The Space Above, een concept waarin locatiegegevens en API-data veel logischer samenkwamen.
+
+
 
 ---
 
@@ -191,7 +191,7 @@ Ook ben ik gestart met het bouwen van de detailpagina. Op deze pagina wil ik ext
 
 Wat ik deze week vooral heb geleerd, is hoe belangrijk het is om verschillende onderdelen stap voor stap op te bouwen. Eerst voelde het project nog erg groot en onoverzichtelijk, maar door kleine onderdelen zoals geolocation en URL parameters één voor één op te lossen, werd het project steeds concreter.
 
-Terugkijkend ben ik blij dat ik na een chaotische week weer focus heb gevonden. Mijn project begint nu steeds meer samen te komen en ik zie duidelijker hoe alle API’s en interacties uiteindelijk één geheel kunnen vormen. In de vakantie wil ik de detailpagina verder afmaken en de interactieve onderdelen van de homepage verbeteren.
+Mijn project begint nu steeds meer samen te komen en ik zie duidelijker hoe alle API’s en interacties uiteindelijk één geheel kunnen vormen. In de vakantie wil ik de detailpagina verder afmaken en de interactieve onderdelen van de homepage verbeteren.
 
 ---
 
@@ -199,7 +199,7 @@ Terugkijkend ben ik blij dat ik na een chaotische week weer focus heb gevonden. 
 
 ### Woensdag 6 mei
 
-Vandaag ben ik bezig geweest met het afronden van de website voor de deadline. In de vakantie heb ik nog gewerkt aan de styling en heb ik de pagina voor het vergelijken toegevoegd
+Vandaag ben ik bezig geweest met het afronden van de website voor de deadline. In de vakantie heb ik nog gewerkt aan de styling en heb ik de pagina voor het vergelijken toegevoegd.
 
 
 **TODO**
@@ -207,15 +207,34 @@ logo
 add button
 waarom niet andere concepten
 
+---
+
+## Reflectie overall
+
+Aan het begin van het vak had ik moeite met het vinden van een concept dat echt klopte. Mijn eerste idee was een film trivia website waarbij gebruikers via multiple choice vragen konden beantwoorden over films uit de TMDb API. Ik wilde hier ook de Spotify API aan koppelen voor geluidsfragmenten en de Canvas API gebruiken om een deelbare scorekaart te genereren. Hoewel ik enthousiast begon en al snel werkende code had met willekeurige filmposters via Math.random(), begon ik al snel te twijfelen. De APIs voelden als losse toevoegingen die niet echt met elkaar samenhingen. Het concept draaide meer om het quizmechanisme dan om een interessante of betekenisvolle gebruikerservaring. Na de presentatie op donderdag werd dit voor mij bevestigd en besloot ik het idee los te laten.
+
+Mijn tweede richting was een interactieve kaart met geolocation en Leaflet in combinatie met OpenStreetMap. Dit voelde technisch een stuk interessanter en ik leerde hoe ik locatiegegevens kon gebruiken binnen een webapplicatie. Toch liep ik ook hier tegen een muur op. Het concept begon te veel te lijken op bestaande kaartapplicaties zoals Google Maps en ik had nog geen unieke invalshoek gevonden. Ik gebruikte geolocation puur omdat het technisch leuk was, maar niet omdat het inhoudelijk iets toevoegde aan een duidelijk verhaal. Ook dit idee liet ik los.
+
+Na twee concepten die niet werkten, besloot ik fundamenteel anders te denken. In plaats van te beginnen bij de technologie, wilde ik beginnen bij een vraag die ik zelf interessant vond: wat gebeurt er eigenlijk boven je hoofd op dit moment? Dit leidde tot The Space Above, een website die op basis van je locatie laat zien wat er astronomisch gezien boven je afspeelt. De zon en maan worden visueel weergegeven in een SVG arc diagram, je ziet de exacte tijden van zonsopgang en zonsondergang, de maanfase met een bijpassende SVG illustratie, en je kunt locaties vergelijken met elkaar.
+
+Wat dit concept sterk maakte was dat alle onderdelen logisch met elkaar samenhingen. De Geolocation API geeft de coördinaten van de gebruiker, die worden via URLSearchParams doorgegeven aan de ipgeolocation Astronomy API die de astronomische data teruggeeft, de Open-Meteo Geocoding API zorgt dat gebruikers ook op steden kunnen zoeken, en de Big Data Cloud API zet coördinaten terug om naar een stadsnaam. Alles had een functie en droeg bij aan de ervaring.
+
+Het werken met APIs vond ik over het algemeen erg interessant. Het idee dat je met een paar regels code live data van buiten je eigen applicatie kunt ophalen en direct kunt weergeven voor de gebruiker vond ik fascinerend. Elke API heeft zijn eigen structuur, documentatie en manier van authenticeren, en het uitzoeken hoe je die data precies kunt opvragen en verwerken gaf me elke keer een voldaan gevoel als het eenmaal werkte. Tegelijkertijd was het ook regelmatig moeilijk. Soms begreep ik de documentatie niet goed genoeg, waren de response objecten complex of werkte authenticatie anders dan verwacht. Het begrijpen van concepten zoals asynchrone code, promises en het verschil tussen server-side en client-side fetching vroeg veel van me. Zeker in het begin was het soms lastig om te begrijpen waarom iets niet werkte en waar het precies misging.
+
+Technisch heb ik in dit project veel nieuwe dingen geleerd. Het werken met URLSearchParams om data tussen pagina's door te geven was voor mij nieuw en opende een manier van denken over hoe je state kunt bewaren zonder een backend. Het koppelen van de Geolocation API aan een externe API via een redirect op de URL was een elegante oplossing voor een probleem dat ik in het begin te ingewikkeld vond. Ook het werken met SVG voor de zenith arc en de maanfase was iets wat ik nog nooit eerder had gedaan. Het berekenen van de positie van de zon en maan op basis van azimuth en altitude en dit omzetten naar coördinaten in een SVG viewBox gaf me inzicht in hoe wiskundige berekeningen en visuele output samen kunnen werken.
+
+---
 
 # Bronnen
+- 1 Gebruikte apis: 
+    ipgeolocation https://ipgeolocation.io/documentation/astronomy-api.html
+    Big Data Cloud https://www.bigdatacloud.com/free-api/free-reverse-geocode-to-city-api
+    Open-Meteo https://open-meteo.com/en/docs/geocoding-api
+ 
+- 2 Favicon: can you generate an image that would be nice for the favicon
 
-Favicon: claude ai: 
--  Favicon: can you generate an image that would be nice for the favicon
 
-
-    Claude responded: I can't generate images, but I can make you an SVG favicon that fits your space theme perfectly — SVGs work as favicons and need no external tools:
-    I can't generate images, but I can make you an SVG favicon that fits your space theme perfectly — SVGs work as favicons and need no external tools:
+    Claude responded: I can make you an SVG favicon that fits your space theme perfectly — SVGs work as favicons and need no external tools:
 
     Add this file as public/favicon.svg:
 
@@ -246,17 +265,108 @@ Favicon: claude ai:
 
 
 
-- encodeURIComponent
+- 3 encodeURIComponent
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
 
-- Geolocation
+- 4 Geolocation
     https://www.youtube.com/watch?v=KIQShH4b_oQ
 
-- Params
+- 5 Params
     https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams
 
-- Flipcard cyd
+- 6 Parralel fetching
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+
+- 7 Flipcard cyd
     https://codepen.io/Sidstumple/pen/ByjXVLw?editors=1100
 
-- 
+- 8 Moon phase svg 
+    is there a way to add an svg of the moon in its phase based the api data 
+
+        <div class="card">
+            <p class="card-title">Moon Phase</p>
+            <p class="card-main">{sky.moon_phase.replace("_"," ")}</p>
+            <p class="card-sub">{sky.moon_illumination_percentage}% illuminated</p>
+            <p class="card-sub">Moonrise {sky.moonrise} · Moonset {sky.moonset}</p>
+        </div>
+    13:25
+    Claude responded: Yes — you can draw it with pure SVG math based on the illumination percentage and whether it's waxing or waning.
+    Yes — you can draw it with pure SVG math based on the illumination percentage and whether it's waxing or waning. Add this to your frontmatter:
+
+    astro
+    // calculate moon phase SVG shadow offset
+    const illumination = sky ? Math.abs(parseFloat(sky.moon_illumination_percentage)) / 100 : 0;
+    const isWaning = sky?.moon_phase?.toLowerCase().includes('waning') || sky?.moon_phase?.toLowerCase().includes('last');
+    const shadowX = isWaning
+    ? 22 - (illumination * 44)
+    : (illumination * 44) - 22;
+    Then in your card:
+
+    astro
+    <div class="card">
+    <svg viewBox="0 0 44 44" width="48" height="48" style="margin-bottom:10px">
+        <defs>
+        <clipPath id="moon-clip">
+            <circle cx="22" cy="22" r="20"/>
+        </clipPath>
+        </defs>
+        <!-- moon disc -->
+        <circle cx="22" cy="22" r="20" fill="rgba(200,216,248,0.15)" stroke="rgba(200,216,248,0.3)" stroke-width="0.5"/>
+        <!-- lit part -->
+        <circle cx="22" cy="22" r="20" fill="rgba(200,216,248,0.75)" clip-path="url(#moon-clip)"/>
+        <!-- shadow overlay -->
+        <circle cx={22 + shadowX} cy="22" r="20" fill="#060812" clip-path="url(#moon-clip)"/>
+    </svg>
+    <p class="card-title">Moon Phase</p>
+    <p class="card-main">{sky.moon_phase.replace("_", " ")}</p>
+    <p class="card-sub">{Math.round(Math.abs(sky.moon_illumination_percentage))}% illuminated</p>
+    <p class="card-sub">Moonrise {sky.moonrise} · Moonset {sky.moonset}</p>
+    </div>
+
+- 9 Zenith Arc
+    I have an SVG arc diagram showing sun and moon positions. The viewBox is 300x160, the horizon line is at y=145, and positions are calculated by mapping azimuth to x (east=10, west=290) and altitude to y (0°=145, 90°=10). How do I draw a vertical dotted line from the horizon to the zenith point, and what x coordinate should it be at?. Using the ipgeoloction api
+
+    Claude responded: Add this to you frontmatter:
+    let sunX = 150, sunY = 145, moonX = 150, moonY = 145;
+    let sunOpacity = '0', moonOpacity = '0';
+    let arcNote = '';
+
+    if (sky) {
+    const toXY = (alt, az) => {
+        const x = 10 + ((parseFloat(az) - 60) / 240) * 280;
+        const y = 145 - (Math.max(0, parseFloat(alt)) / 90) * 135;
+        return { x: Math.max(10, Math.min(290, x)), y: Math.max(10, Math.min(145, y)) };
+    };
+
+    const sun  = toXY(sky.sun_altitude,  sky.sun_azimuth);
+    const moon = toXY(sky.moon_altitude, sky.moon_azimuth);
+
+    sunX  = sun.x;  sunY  = sun.y;
+    moonX = moon.x; moonY = moon.y;
+
+    sunOpacity  = parseFloat(sky.sun_altitude)  > 0 ? '1' : '0.25';
+    moonOpacity = parseFloat(sky.moon_altitude) > 0 ? '1' : '0.25';
+
+    arcNote =
+        (parseFloat(sky.sun_altitude)  > 0 ? `Sun ${parseFloat(sky.sun_altitude).toFixed(1)}° above horizon`  : 'Sun below horizon') +
+        '  ·  ' +
+        (parseFloat(sky.moon_altitude) > 0 ? `Moon ${parseFloat(sky.moon_altitude).toFixed(1)}° above horizon` : 'Moon below horizon');
+    }
+
+    Add this to your index.astro:
+    <div>
+    <p class="arc-label">Sky Arc</p>
+    <svg viewBox="0 0 300 160" style="width:100%;display:block;overflow:visible">
+        <line x1="10" y1="145" x2="290" y2="145" stroke="rgba(120,160,255,0.50)" stroke-width="1"/>
+        <path d="M 10 145 A 140 140 0 0 1 290 145" fill="none" stroke="rgba(245,199,106,0.50)" stroke-width="1" stroke-dasharray="4 4"/>
+        <text x="6"   y="155" font-family="Space Mono" font-size="9" fill="rgba(120,160,255,0.4)">E</text>
+        <text x="148" y="16"  font-family="Space Mono" font-size="9" fill="rgba(120,160,255,0.4)" text-anchor="middle">Zenith</text>
+        <text x="286" y="155" font-family="Space Mono" font-size="9" fill="rgba(120,160,255,0.4)" text-anchor="end">W</text>
+        <circle cx={city.sunX}  cy={city.sunY}      r="8" fill="rgba(245,199,106,0.8)" opacity={city.sunOpacity}/>
+        <text   x={city.sunX}   y={city.sunY - 12}  font-family="Space Mono" font-size="8" fill="#f5c76a" text-anchor="middle" opacity={city.sunOpacity}>Sun</text>
+        <circle cx={city.moonX} cy={city.moonY}     r="6" fill="rgba(200,216,248,0.7)" opacity={city.moonOpacity}/>
+        <text   x={city.moonX}  y={city.moonY - 10} font-family="Space Mono" font-size="8" fill="#c8d8f8" text-anchor="middle" opacity={city.moonOpacity}>Moon</text>
+    </svg>
+    <p class="arc-note">{city.arcNote}</p>
+    </div>
 
