@@ -6,6 +6,7 @@ const GEO_API_KEY = import.meta.env.IPGEO_API_KEY;
 const url = new URL(Astro.request.url);
 const lat = url.searchParams.get('lat');
 const lng = url.searchParams.get('lng');
+// bron 5 in readme
 
 let sky = null;
 
@@ -72,6 +73,7 @@ const shadowX = isWaning
       <div class="outside">
     
         <header>
+          <!-- bron 2 in readme -->
           <a href="/" class="logo-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="64" height="64">
               <circle cx="16" cy="16" r="16" fill="#060812"/>
@@ -114,11 +116,13 @@ const shadowX = isWaning
                 <text x={moonX} y={moonY - 10} font-family="Space Mono" font-size="8" fill="#c8d8f8" text-anchor="middle" opacity={moonOpacity}>Moon</text>
               </svg>
               <p class="arc-note">{arcNote}</p>
+              <!-- bron 9 in readme  -->
             </div>
         
             <div class="arc-back">
               <p class="arc-label">What is the zenith?</p>
               <p class="flip-text">The zenith is the point in the sky directly above you, 90° altitude. The arc diagram shows the path the sun and moon travel from east to west, rising above the horizon and passing beneath the zenith, calculated with the azimuth and altitude.</p>
+              <!-- bron 7 in readme  -->
             </div>
           </div>
         </div>
@@ -136,7 +140,9 @@ const shadowX = isWaning
                 <circle cx="22" cy="22" r="20" fill="rgba(200,216,248,0.15)" stroke="rgba(200,216,248,0.3)" stroke-width="0.5"/>
                 <circle cx="22" cy="22" r="20" fill="rgba(200,216,248,0.75)" clip-path="url(#moon-clip)"/>
                 <circle cx={22 + shadowX} cy="22" r="20" fill="#060812" clip-path="url(#moon-clip)"/>
+                <!-- bron 8 in readme  -->
               </svg>
+
               <p class="card-title">Moon Phase</p>
               <p class="card-main">{sky.moon_phase.replace("_", " ")}</p>
               <p class="card-sub">{Math.round(Math.abs(sky.moon_illumination_percentage))}% illuminated</p>
@@ -203,10 +209,6 @@ const shadowX = isWaning
 
           const { latitude, longitude } = data.results[0];
           window.location.search = `?lat=${latitude}&lng=${longitude}`;
-        });
-
-        document.getElementById('city-input').addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') document.getElementById('city-btn').click();
         });
 
           const card = document.querySelector('.arc-details-wrap');

@@ -88,7 +88,7 @@ body::before {
   z-index: 1;
   max-width: 860px;
   margin: 0 auto;
-  padding: 48px 24px 80px;
+  padding: 25px 24px 80px;
 }
 
 
@@ -395,7 +395,7 @@ a {
   position: relative;
   z-index: 1;
   margin: 0 auto;
-  padding: 48px 24px 80px;
+  padding: 25px 24px 80px;
 }
 
 .compare-grid {

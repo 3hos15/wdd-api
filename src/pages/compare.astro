@@ -11,6 +11,7 @@ const coords = [
   { lat: url.searchParams.get('lat3'), lng: url.searchParams.get('lng3') },
 ].filter(c => c.lat && c.lng);
 
+// bron 6 in readme 
 const cities = await Promise.all(coords.map(async ({ lat, lng }) => {
   const [skyRes, geoRes] = await Promise.all([
     fetch(`https://api.ipgeolocation.io/astronomy?apiKey=${GEO_API_KEY}&lat=${lat}&long=${lng}`),
@@ -175,8 +176,10 @@ console.log(cities)
         const city = document.getElementById('city-input').value;
         if (!city) return;
 
+        // bron 3 in readme
         const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`);
         const data = await res.json();
+        
 
         if (!data.results || !data.results.length) {
           alert('City not found');
