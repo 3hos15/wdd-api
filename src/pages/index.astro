@@ -2,6 +2,7 @@
 export const prerender = false;
 
 const GEO_API_KEY = import.meta.env.IPGEO_API_KEY;
+console.log(GEO_API_KEY)
 
 const url = new URL(Astro.request.url);
 const lat = url.searchParams.get('lat');
@@ -73,11 +74,13 @@ if (lat && lng) {
           <input id="city-input" type="text" placeholder="Search a city..." class="city-input" />
           <button id="city-btn" class="city-btn">Search</button>
           <button id="my-location-btn" class="city-btn">↺ Me</button>
+          <a href={lat ? `/compare?lat=${lat}&lng=${lng}` : '/compare'} class="city-btn">Compare cities ➚</a>
         </div>
 
-        <div class="flip-card">
-          <div class="flip-inner">
-            <div class="flip-front">
+        <div class="arc-details-wrap">
+          <div class="arc-details">
+        
+            <div class="arc-summary">
               <p class="arc-label">Sky Arc — Sun &amp; Moon Position</p>
               <svg viewBox="0 0 300 160" style="width:100%;max-width:500px;display:block;margin:0 auto;overflow:visible">
                 <line x1="10" y1="145" x2="290" y2="145" stroke="rgba(120,160,255,0.50)" stroke-width="1"/>
@@ -92,7 +95,8 @@ if (lat && lng) {
               </svg>
               <p class="arc-note">{arcNote}</p>
             </div>
-            <div class="flip-back">
+        
+            <div class="arc-back">
               <p class="arc-label">What is the zenith?</p>
               <p class="flip-text">The zenith is the point in the sky directly above you, 90° altitude. The arc diagram shows the path the sun and moon travel from east to west, rising above the horizon and passing beneath the zenith, calculated with the azimuth and altitude.</p>
             </div>
@@ -101,14 +105,13 @@ if (lat && lng) {
 
         {sky && (
           <>
-            <a href={`/moon?lat=${lat}&lng=${lng}`} class="card-link">
-              <div class="card">
-                <p class="card-title">Moon Phase</p>
-                <p class="card-main">{sky.moon_phase.replace("_"," ")}</p>
-                <p class="card-sub">{sky.moon_illumination_percentage}% illuminated</p>
-                <p class="card-sub">Moonrise {sky.moonrise} · Moonset {sky.moonset}</p>
-              </div>
-            </a>
+            <div class="card">
+              <p class="card-title">Moon Phase</p>
+              <p class="card-main">{sky.moon_phase.replace("_"," ")}</p>
+              <p class="card-sub">{sky.moon_illumination_percentage}% illuminated</p>
+              <p class="card-sub">Moonrise {sky.moonrise} · Moonset {sky.moonset}</p>
+            </div>
+
 
             <div class="card sun">
               <p class="card-title">Sun Altitude</p>
@@ -153,9 +156,8 @@ if (lat && lng) {
       document.getElementById('my-location-btn').addEventListener('click', () => {
         window.location.href = window.location.pathname;
       });
-    </script>
 
-    <script>
+
       document.getElementById('city-btn').addEventListener('click', async () => {
         const city = document.getElementById('city-input').value.trim();
         if (!city) return;
@@ -175,6 +177,12 @@ if (lat && lng) {
       document.getElementById('city-input').addEventListener('keydown', (e) => {
         if (e.key === 'Enter') document.getElementById('city-btn').click();
       });
-</script>
+
+      const card = document.querySelector('.arc-details-wrap');
+  
+      card.addEventListener('click', () => {
+      card.classList.toggle('flipped');
+  });
+    </script>
   </body>
 </html>
